@@ -63,5 +63,14 @@ git reset命令既可以回退版本，也可以把暂存区的修改回退到�
 $ git checkout -- test.txt
 git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
 
+用户主目录下（cd ~，然后pwd查看路径）的.ssh文件，里面有id_rsa和id_rsa.pub两个文件，这是SSH Key的秘钥对，id_rsa是私钥（私人），id_rsa.pub是公钥（可公开）
 
-用户主目录下（cd ~，然后pwd查看路径）的.ssh文件，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人
+$ git remote add origin https://github.com/githso/gitnote.git关联远程库
+$ git push -u origin master第一次推送：把本地版本库master推送到远程仓库origin
+
+由于远程库是空的，第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+以后就可以用$ git push origin master推送内容
+
+创建SSH Key。打开Shell（Windows下打开Git Bash），创建SSH Key：
+$ ssh-keygen -t rsa -C "youremail@example.com",一路回车，无需设置密码
